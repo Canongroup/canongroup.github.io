@@ -44,3 +44,14 @@ body {
   color: #000;
   border-top: 1px solid #eee;
 }
+.hamburger {
+  width: 30px;
+  cursor: pointer;
+}
+
+.hamburger span {
+  display: block;
+  height: 3px;
+  background: #000;
+  margin: 6px 0;
+}
