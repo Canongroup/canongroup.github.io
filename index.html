@@ -285,7 +285,7 @@
     <div class="salon-grid">
 
       <!-- Canon art -->
-      <div class="salon-card reveal reveal-delay-1">
+      <div class="salon-card reveal">
         <div class="salon-card-top">
           <div class="salon-number">01</div>
           <div class="salon-card-name">Canon art</div>
@@ -489,7 +489,7 @@
       entries.forEach(e => {
         if (e.isIntersecting) e.target.classList.add('visible');
       });
-    }, { threshold: 0.12 });
+    }, { threshold: 0.05 });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   </script>
 </body>
