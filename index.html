@@ -152,6 +152,16 @@
 
     .btn-icon { width: 16px; height: 16px; flex-shrink: 0; }
 
+    /* マップリンク */
+    .btn-map {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      background: var(--beige); color: var(--dark-brown); text-decoration: none;
+      padding: 13px; font-size: 11px; letter-spacing: 0.2em;
+      border: 1px solid var(--border);
+      transition: background 0.3s;
+    }
+    .btn-map:hover { background: var(--border); }
+
     /* ─── RECRUIT ─── */
     .recruit-section { background: var(--dark-brown); padding: 120px 80px; text-align: center; position: relative; overflow: hidden; }
     .recruit-section::before { content: 'JOIN US'; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-family: 'Cormorant Garamond', serif; font-size: 200px; color: rgba(255,255,255,0.03); white-space: nowrap; letter-spacing: 0.1em; pointer-events: none; }
@@ -300,6 +310,10 @@
             <span>月曜・第2第3火曜・第1日曜</span>
           </div>
           <div class="salon-btns">
+            <a href="https://maps.app.goo.gl/McDPiy8ttxEYqf1n9" target="_blank" class="btn-map">
+              <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+              Google マップで見る
+            </a>
             <a href="http://b.hpr.jp/hp/H000354998" target="_blank" class="btn-hotpepper">
               <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
               ホットペッパーで予約
@@ -337,7 +351,12 @@
             <span class="salon-info-label">Close</span>
             <span>月曜・第2第3火曜・第1日曜</span>
           </div>
+          <iframe class="salon-map" src="https://www.google.com/maps?q=大阪府東大阪市森河内2-30-21+ヴェルデ石橋1F&output=embed" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
           <div class="salon-btns">
+            <a href="https://maps.app.goo.gl/3ypbi4phX18RqiTc8" target="_blank" class="btn-map">
+              <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+              Google マップで見る
+            </a>
             <a href="http://b.hpr.jp/hp/H000563519" target="_blank" class="btn-hotpepper">
               <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
               ホットペッパーで予約
@@ -375,7 +394,12 @@
             <span class="salon-info-label">Close</span>
             <span>月曜・第2第3火曜・第1日曜</span>
           </div>
+          <iframe class="salon-map" src="https://www.google.com/maps?q=大阪府四條畷市岡山東1-6-10+エクセレント忍ヶ丘2F&output=embed" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
           <div class="salon-btns">
+            <a href="https://maps.app.goo.gl/Lx1SNZvfaP8UfUk67" target="_blank" class="btn-map">
+              <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+              Google マップで見る
+            </a>
             <a href="http://b.hpr.jp/hp/H000795920" target="_blank" class="btn-hotpepper">
               <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
               ホットペッパーで予約
