@@ -102,7 +102,11 @@
     .salon-info-row { display: flex; gap: 16px; font-size: 13px; line-height: 1.9; color: var(--text); margin-bottom: 10px; align-items: flex-start; }
     .salon-info-label { font-size: 9px; letter-spacing: 0.2em; color: var(--gold); text-transform: uppercase; min-width: 40px; padding-top: 3px; flex-shrink: 0; }
     .salon-divider { height: 1px; background: var(--border); margin: 24px 0; }
-    .salon-map { width: 100%; height: 180px; border: none; display: block; margin-top: 24px; filter: grayscale(15%); }
+    .salon-map { width: 100%; height: 180px; border: none; display: block; filter: grayscale(15%); }
+    .salon-map-wrap { display: block; margin-top: 24px; position: relative; text-decoration: none; overflow: hidden; }
+    .salon-map-wrap::after { content: 'Google マップで開く →'; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(74,55,40,0); color: transparent; font-size: 12px; letter-spacing: 0.15em; transition: background 0.3s, color 0.3s; }
+    .salon-map-wrap:hover::after { background: rgba(74,55,40,0.55); color: var(--cream); }
+    .salon-map-wrap iframe { pointer-events: none; }
 
     /* ボタン */
     .salon-btns { display: flex; flex-direction: column; gap: 10px; margin-top: 28px; }
@@ -203,7 +207,7 @@
   <!-- CONCEPT -->
   <section class="concept" id="concept">
     <div class="reveal">
-      <h2 class="section-en">３年後の<br><em style="font-style:italic; color:var(--brown);">髪を守る。</em></h2>
+      <h2 class="section-en">今よりも、<br><em style="font-style:italic; color:var(--brown);">これからの髪を大切に。</em></h2>
       <div class="ornament">
         <div class="ornament-line"></div>
         <div class="ornament-diamond"></div>
@@ -213,7 +217,7 @@
     <div class="reveal reveal-delay-1">
       <p class="section-label">Concept</p>
       <p class="concept-body">
-        今よりも、これからの髪を大切に。<br><br>
+        <br>
         あなたの理想を叶え、<br>
         ３年後の髪を守るサロン。
       </p>
@@ -242,7 +246,9 @@
           <div class="salon-divider"></div>
           <div class="salon-info-row"><span class="salon-info-label">Open</span><span>10:00 〜 20:00</span></div>
           <div class="salon-info-row"><span class="salon-info-label">Close</span><span>月曜・第2第3火曜・第1日曜</span></div>
-          <iframe class="salon-map" src="https://maps.google.com/maps?q=34.7067381,135.6234288&z=17&output=embed" allowfullscreen loading="lazy"></iframe>
+          <a href="https://maps.app.goo.gl/McDPiy8ttxEYqf1n9" target="_blank" rel="noopener noreferrer" class="salon-map-wrap">
+            <iframe class="salon-map" src="https://maps.google.com/maps?q=34.7067381,135.6234288&z=17&output=embed" allowfullscreen loading="lazy"></iframe>
+          </a>
           <div class="salon-btns">
             <a href="https://maps.app.goo.gl/McDPiy8ttxEYqf1n9" target="_blank" rel="noopener noreferrer" class="btn btn-map">
               <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
