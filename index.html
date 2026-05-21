@@ -45,20 +45,21 @@
 
     /* HERO */
     .hero { height: 100vh; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; background: var(--beige); }
-    .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse at 20% 50%, rgba(201,169,110,0.15) 0%, transparent 50%), radial-gradient(ellipse at 80% 20%, rgba(139,111,94,0.1) 0%, transparent 50%); }
-    .hero-circle { position: absolute; border-radius: 50%; border: 1px solid rgba(201,169,110,0.2); }
+    .hero-bg-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: 0.55; }
+    .hero-bg { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(74,55,40,0.3) 0%, rgba(74,55,40,0.5) 100%); z-index: 1; }
+    .hero-circle { position: absolute; border-radius: 50%; border: 1px solid rgba(201,169,110,0.3); z-index: 2; }
     .hero-circle-1 { width: 600px; height: 600px; top: 50%; left: 50%; transform: translate(-50%,-50%); animation: rotate 40s linear infinite; }
     .hero-circle-2 { width: 420px; height: 420px; top: 50%; left: 50%; transform: translate(-50%,-50%); border-color: rgba(201,169,110,0.15); animation: rotate 30s linear infinite reverse; }
     @keyframes rotate { to { transform: translate(-50%,-50%) rotate(360deg); } }
-    .hero-content { position: relative; z-index: 2; text-align: center; }
-    .hero-label { font-size: 11px; letter-spacing: 0.5em; color: var(--gold); text-transform: uppercase; margin-bottom: 32px; animation: fadeIn 1.5s ease forwards; opacity: 0; }
-    .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(64px, 10vw, 120px); font-weight: 300; line-height: 1; letter-spacing: 0.05em; color: var(--dark-brown); animation: fadeIn 1.5s 0.3s ease forwards; opacity: 0; }
-    .hero-title em { font-style: italic; color: var(--brown); }
-    .hero-subtitle { font-family: 'Zen Old Mincho', serif; font-size: 16px; color: var(--brown); margin-top: 28px; letter-spacing: 0.3em; animation: fadeIn 1.5s 0.6s ease forwards; opacity: 0; }
-    .hero-tagline { font-size: 12px; color: var(--gray); margin-top: 12px; letter-spacing: 0.25em; animation: fadeIn 1.5s 0.75s ease forwards; opacity: 0; }
+    .hero-content { position: relative; z-index: 3; text-align: center; }
+    .hero-label { font-size: 11px; letter-spacing: 0.5em; color: var(--light-gold); text-transform: uppercase; margin-bottom: 32px; animation: fadeIn 1.5s ease forwards; opacity: 0; }
+    .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(64px, 10vw, 120px); font-weight: 300; line-height: 1; letter-spacing: 0.05em; color: var(--cream); animation: fadeIn 1.5s 0.3s ease forwards; opacity: 0; }
+    .hero-title em { font-style: italic; color: var(--light-gold); }
+    .hero-subtitle { font-family: 'Zen Old Mincho', serif; font-size: 16px; color: var(--cream); margin-top: 28px; letter-spacing: 0.3em; animation: fadeIn 1.5s 0.6s ease forwards; opacity: 0; }
+    .hero-tagline { font-size: 12px; color: var(--light-gold); margin-top: 12px; letter-spacing: 0.25em; animation: fadeIn 1.5s 0.75s ease forwards; opacity: 0; }
     .hero-line { width: 1px; height: 80px; background: linear-gradient(to bottom, var(--gold), transparent); margin: 48px auto 0; animation: fadeIn 1.5s 0.9s ease forwards; opacity: 0; }
     @keyframes fadeIn { to { opacity: 1; } }
-    .scroll-hint { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 10px; font-size: 9px; letter-spacing: 0.4em; color: var(--gray); animation: fadeIn 2s 1.5s ease forwards; opacity: 0; }
+    .scroll-hint { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 10px; font-size: 9px; letter-spacing: 0.4em; color: rgba(255,255,255,0.5); animation: fadeIn 2s 1.5s ease forwards; opacity: 0; }
     .scroll-bar { width: 1px; height: 48px; background: linear-gradient(to bottom, var(--gold), transparent); animation: scrollAnim 2s 2s ease-in-out infinite; }
     @keyframes scrollAnim { 0% { transform: scaleY(0); transform-origin: top; opacity:1; } 50% { transform: scaleY(1); transform-origin: top; opacity:1; } 100% { transform: scaleY(1); transform-origin: bottom; opacity:0; } }
 
@@ -182,9 +183,10 @@
 
   <!-- HERO -->
   <section class="hero">
+    <img class="hero-bg-img" src="images/hero.jpeg" alt="">
     <div class="hero-bg"></div>
-    <div class="hero-circle hero-circle-1"></div>
-    <div class="hero-circle hero-circle-2"></div>
+    <div class="hero-circle hero-circle-1" style="z-index:2;"></div>
+    <div class="hero-circle hero-circle-2" style="z-index:2;"></div>
     <div class="hero-content">
       <p class="hero-label">Hair Salon Group — Osaka</p>
       <h1 class="hero-title">Canon<br><em>Group</em></h1>
@@ -240,7 +242,7 @@
           <div class="salon-divider"></div>
           <div class="salon-info-row"><span class="salon-info-label">Open</span><span>10:00 〜 20:00</span></div>
           <div class="salon-info-row"><span class="salon-info-label">Close</span><span>月曜・第2第3火曜・第1日曜</span></div>
-          <iframe class="salon-map" src="https://maps.google.com/maps?q=大東市住道1-2-25&z=16&output=embed" allowfullscreen loading="lazy"></iframe>
+          <iframe class="salon-map" src="https://maps.google.com/maps?q=34.7067381,135.6234288&z=17&output=embed" allowfullscreen loading="lazy"></iframe>
           <div class="salon-btns">
             <a href="https://maps.app.goo.gl/McDPiy8ttxEYqf1n9" target="_blank" rel="noopener noreferrer" class="btn btn-map">
               <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
@@ -271,7 +273,7 @@
           <div class="salon-divider"></div>
           <div class="salon-info-row"><span class="salon-info-label">Open</span><span>10:00 〜 20:00</span></div>
           <div class="salon-info-row"><span class="salon-info-label">Close</span><span>月曜・第2第3火曜・第1日曜</span></div>
-          <iframe class="salon-map" src="https://maps.google.com/maps?q=東大阪市森河内2-30-21&z=16&output=embed" allowfullscreen loading="lazy"></iframe>
+          <iframe class="salon-map" src="https://maps.google.com/maps?q=34.6867589,135.5655206&z=17&output=embed" allowfullscreen loading="lazy"></iframe>
           <div class="salon-btns">
             <a href="https://maps.app.goo.gl/3ypbi4phX18RqiTc8" target="_blank" rel="noopener noreferrer" class="btn btn-map">
               <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
@@ -302,7 +304,7 @@
           <div class="salon-divider"></div>
           <div class="salon-info-row"><span class="salon-info-label">Open</span><span>10:00 〜 20:00</span></div>
           <div class="salon-info-row"><span class="salon-info-label">Close</span><span>月曜・第2第3火曜・第1日曜</span></div>
-          <iframe class="salon-map" src="https://maps.google.com/maps?q=四條畷市岡山東1-6-10&z=16&output=embed" allowfullscreen loading="lazy"></iframe>
+          <iframe class="salon-map" src="https://maps.google.com/maps?q=34.7451446,135.6466582&z=17&output=embed" allowfullscreen loading="lazy"></iframe>
           <div class="salon-btns">
             <a href="https://maps.app.goo.gl/Lx1SNZvfaP8UfUk67" target="_blank" rel="noopener noreferrer" class="btn btn-map">
               <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
