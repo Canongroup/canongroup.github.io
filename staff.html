@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Staff | Canon Group</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Noto+Sans+JP:wght@300;400;500&family=Zen+Old+Mincho:wght@400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cream: #faf7f2;
+      --white: #ffffff;
+      --beige: #f0ebe2;
+      --brown: #8b6f5e;
+      --dark-brown: #4a3728;
+      --gold: #c9a96e;
+      --light-gold: #e8d5b0;
+      --gray: #999;
+      --text: #3a2e28;
+      --border: #e0d5c8;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--cream); color: var(--text); font-family: 'Noto Sans JP', sans-serif; font-weight: 300; overflow-x: hidden; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(250,247,242,0.92); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 60px; height: 72px;
+    }
+    .logo-wrap { display: flex; flex-direction: column; line-height: 1; text-decoration: none; }
+    .logo-en { font-family: 'Cormorant Garamond', serif; font-size: 20px; letter-spacing: 0.3em; color: var(--dark-brown); }
+    .logo-ja { font-size: 9px; letter-spacing: 0.2em; color: var(--brown); margin-top: 3px; }
+    .nav-links { display: flex; gap: 40px; list-style: none; align-items: center; }
+    .nav-links a { color: var(--text); text-decoration: none; font-size: 14px; letter-spacing: 0.15em; text-transform: uppercase; transition: color 0.3s; position: relative; }
+    .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; right: 0; height: 1px; background: var(--gold); transform: scaleX(0); transition: transform 0.3s; }
+    .nav-links a:hover { color: var(--brown); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+    .nav-reserve { background: var(--dark-brown); color: var(--cream) !important; padding: 10px 24px; font-size: 11px; letter-spacing: 0.2em; text-decoration: none; transition: background 0.3s; }
+    .nav-reserve:hover { background: var(--brown); }
+    .nav-reserve::after { display: none !important; }
+
+    /* HERO */
+    .page-hero {
+      height: 320px; background: var(--dark-brown);
+      display: flex; align-items: flex-end; justify-content: center;
+      padding-bottom: 60px; position: relative; overflow: hidden;
+    }
+    .page-hero::before {
+      content: 'STAFF'; position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: 'Cormorant Garamond', serif; font-size: 180px;
+      color: rgba(255,255,255,0.04); letter-spacing: 0.2em; white-space: nowrap;
+    }
+    .page-hero-content { position: relative; z-index: 2; text-align: center; }
+    .page-hero-label { font-size: 10px; letter-spacing: 0.5em; color: var(--light-gold); text-transform: uppercase; margin-bottom: 16px; }
+    .page-hero-title { font-family: 'Cormorant Garamond', serif; font-size: 72px; font-weight: 300; color: var(--cream); letter-spacing: 0.08em; line-height: 1; }
+
+    /* SALON TABS */
+    .salon-tabs {
+      position: sticky; top: 72px; z-index: 50;
+      background: var(--white); border-bottom: 1px solid var(--border);
+      display: flex; justify-content: center; gap: 0;
+    }
+    .tab-btn {
+      padding: 20px 48px; font-size: 12px; letter-spacing: 0.25em;
+      text-transform: uppercase; cursor: pointer; border: none;
+      background: none; color: var(--gray); transition: color 0.3s;
+      position: relative; font-family: 'Noto Sans JP', sans-serif;
+    }
+    .tab-btn::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+      height: 2px; background: var(--gold); transform: scaleX(0); transition: transform 0.3s;
+    }
+    .tab-btn.active { color: var(--dark-brown); }
+    .tab-btn.active::after { transform: scaleX(1); }
+    .tab-btn:hover { color: var(--brown); }
+
+    /* STAFF SECTION */
+    .staff-section { padding: 80px; max-width: 1200px; margin: 0 auto; }
+    .salon-group { display: none; }
+    .salon-group.active { display: block; }
+
+    .salon-group-header { margin-bottom: 48px; }
+    .salon-group-name { font-family: 'Cormorant Garamond', serif; font-size: 48px; font-weight: 300; color: var(--dark-brown); }
+    .salon-group-name-ja { font-size: 11px; color: var(--brown); letter-spacing: 0.25em; margin-top: 4px; }
+    .ornament { display: flex; align-items: center; gap: 16px; margin-top: 20px; }
+    .ornament-line { height: 1px; width: 48px; background: var(--gold); }
+    .ornament-diamond { width: 6px; height: 6px; background: var(--gold); transform: rotate(45deg); }
+
+    /* STAFF GRID */
+    .staff-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; }
+
+    .staff-card {
+      cursor: pointer; position: relative;
+      background: var(--white); border: 1px solid var(--border);
+      overflow: hidden; transition: box-shadow 0.4s, transform 0.4s;
+    }
+    .staff-card:hover { box-shadow: 0 8px 32px rgba(74,55,40,0.12); transform: translateY(-4px); }
+
+    .staff-photo {
+      width: 100%; aspect-ratio: 3/4; background: var(--beige);
+      overflow: hidden; position: relative;
+    }
+    .staff-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform 0.6s ease; }
+    .staff-card:hover .staff-photo img { transform: scale(1.05); }
+
+    .staff-photo-placeholder {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, var(--beige) 0%, var(--light-gold) 100%);
+    }
+    .staff-photo-placeholder svg { width: 64px; height: 64px; opacity: 0.3; }
+
+    .staff-info { padding: 20px; }
+    .staff-role { font-size: 9px; letter-spacing: 0.3em; color: var(--gold); text-transform: uppercase; margin-bottom: 6px; }
+    .staff-name { font-family: 'Zen Old Mincho', serif; font-size: 17px; color: var(--dark-brown); margin-bottom: 4px; }
+    .staff-name-en { font-family: 'Cormorant Garamond', serif; font-size: 13px; color: var(--gray); letter-spacing: 0.1em; }
+
+    .staff-card-arrow {
+      position: absolute; bottom: 16px; right: 16px;
+      width: 28px; height: 28px; border: 1px solid var(--border);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      transition: border-color 0.3s, background 0.3s;
+    }
+    .staff-card:hover .staff-card-arrow { border-color: var(--gold); background: var(--gold); }
+    .staff-card-arrow svg { width: 12px; height: 12px; fill: none; stroke: var(--gray); stroke-width: 1.5; transition: stroke 0.3s; }
+    .staff-card:hover .staff-card-arrow svg { stroke: var(--dark-brown); }
+
+    /* MODAL */
+    .modal-overlay {
+      position: fixed; inset: 0; z-index: 200;
+      background: rgba(30,20,15,0.7); backdrop-filter: blur(4px);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none; transition: opacity 0.4s;
+      padding: 24px;
+    }
+    .modal-overlay.open { opacity: 1; pointer-events: all; }
+
+    .modal {
+      background: var(--cream); max-width: 780px; width: 100%;
+      max-height: 90vh; overflow-y: auto;
+      display: grid; grid-template-columns: 280px 1fr;
+      transform: translateY(24px); transition: transform 0.4s;
+      position: relative;
+    }
+    .modal-overlay.open .modal { transform: translateY(0); }
+
+    .modal-close {
+      position: absolute; top: 20px; right: 20px;
+      width: 36px; height: 36px; border: 1px solid var(--border);
+      border-radius: 50%; background: var(--cream); cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      z-index: 10; transition: background 0.3s;
+    }
+    .modal-close:hover { background: var(--beige); }
+    .modal-close svg { width: 14px; height: 14px; fill: none; stroke: var(--text); stroke-width: 1.5; }
+
+    .modal-photo {
+      background: var(--beige); aspect-ratio: unset; min-height: 360px;
+      overflow: hidden; position: relative;
+    }
+    .modal-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+    .modal-photo-placeholder {
+      width: 100%; height: 100%; min-height: 360px;
+      display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, var(--beige) 0%, var(--light-gold) 100%);
+    }
+    .modal-photo-placeholder svg { width: 80px; height: 80px; opacity: 0.25; }
+
+    .modal-body { padding: 48px 40px; }
+    .modal-salon { font-size: 9px; letter-spacing: 0.3em; color: var(--gold); text-transform: uppercase; margin-bottom: 8px; }
+    .modal-role { font-size: 10px; letter-spacing: 0.25em; color: var(--brown); text-transform: uppercase; margin-bottom: 16px; }
+    .modal-name { font-family: 'Zen Old Mincho', serif; font-size: 28px; color: var(--dark-brown); margin-bottom: 4px; }
+    .modal-name-en { font-family: 'Cormorant Garamond', serif; font-size: 18px; color: var(--gray); letter-spacing: 0.1em; margin-bottom: 28px; }
+
+    .modal-divider { height: 1px; background: var(--border); margin: 24px 0; }
+
+    .modal-section-label { font-size: 9px; letter-spacing: 0.3em; color: var(--gold); text-transform: uppercase; margin-bottom: 10px; }
+    .modal-message { font-size: 13px; line-height: 2.4; color: var(--brown); font-family: 'Zen Old Mincho', serif; }
+    .modal-specialties { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+    .specialty-tag {
+      font-size: 11px; padding: 5px 14px; border: 1px solid var(--border);
+      color: var(--brown); letter-spacing: 0.1em;
+    }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* FOOTER */
+    footer { background: var(--cream); border-top: 1px solid var(--border); padding: 60px 80px; margin-top: 80px; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+    .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 24px; letter-spacing: 0.2em; color: var(--dark-brown); text-decoration: none; }
+    .footer-back { color: var(--brown); text-decoration: none; font-size: 12px; letter-spacing: 0.2em; display: flex; align-items: center; gap: 8px; transition: gap 0.3s; }
+    .footer-back:hover { gap: 16px; }
+    .footer-copy { font-size: 11px; color: var(--gray); }
+
+    /* RESPONSIVE */
+    @media (max-width: 960px) {
+      nav { padding: 0 24px; }
+      .nav-links, .nav-reserve { display: none; }
+      .tab-btn { padding: 16px 20px; font-size: 11px; }
+      .staff-section { padding: 48px 24px; }
+      .staff-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+      .modal { grid-template-columns: 1fr; }
+      .modal-photo { min-height: 280px; }
+      footer { padding: 40px 24px; }
+      .footer-inner { flex-direction: column; gap: 20px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="logo-wrap">
+      <span class="logo-en">CANON GROUP</span>
+      <span class="logo-ja">カノン グループ</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#concept">About</a></li>
+      <li><a href="index.html#salons">Salon</a></li>
+      <li><a href="index.html#recruit">Recruit</a></li>
+      <li><a href="https://www.instagram.com/canongroup_/" target="_blank">Instagram</a></li>
+    </ul>
+    <a href="index.html#salons" class="nav-reserve">ご予約はこちら</a>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="page-hero-content">
+      <p class="page-hero-label">Our Team</p>
+      <h1 class="page-hero-title">Staff</h1>
+    </div>
+  </div>
+
+  <!-- SALON TABS -->
+  <div class="salon-tabs">
+    <button class="tab-btn active" data-target="all">All</button>
+    <button class="tab-btn" data-target="canonart">Canon art</button>
+    <button class="tab-btn" data-target="forte">Forte</button>
+    <button class="tab-btn" data-target="canonbell">Canon bell</button>
+  </div>
+
+  <!-- STAFF LIST -->
+  <div class="staff-section">
+
+    <!-- ALL -->
+    <div class="salon-group active" id="all">
+
+      <!-- Canon art -->
+      <div class="salon-group-header reveal">
+        <div class="salon-group-name">Canon art</div>
+        <div class="salon-group-name-ja">カノン アート</div>
+        <div class="ornament"><div class="ornament-line"></div><div class="ornament-diamond"></div></div>
+      </div>
+      <div class="staff-grid" id="grid-canonart-all"></div>
+
+      <!-- Forte -->
+      <div class="salon-group-header reveal" style="margin-top:80px;">
+        <div class="salon-group-name">Forte</div>
+        <div class="salon-group-name-ja">フォルテ</div>
+        <div class="ornament"><div class="ornament-line"></div><div class="ornament-diamond"></div></div>
+      </div>
+      <div class="staff-grid" id="grid-forte-all"></div>
+
+      <!-- Canon bell -->
+      <div class="salon-group-header reveal" style="margin-top:80px;">
+        <div class="salon-group-name">Canon bell</div>
+        <div class="salon-group-name-ja">カノン ベル</div>
+        <div class="ornament"><div class="ornament-line"></div><div class="ornament-diamond"></div></div>
+      </div>
+      <div class="staff-grid" id="grid-canonbell-all"></div>
+    </div>
+
+    <!-- Canon art tab -->
+    <div class="salon-group" id="canonart">
+      <div class="salon-group-header reveal">
+        <div class="salon-group-name">Canon art</div>
+        <div class="salon-group-name-ja">カノン アート</div>
+        <div class="ornament"><div class="ornament-line"></div><div class="ornament-diamond"></div></div>
+      </div>
+      <div class="staff-grid" id="grid-canonart"></div>
+    </div>
+
+    <!-- Forte tab -->
+    <div class="salon-group" id="forte">
+      <div class="salon-group-header reveal">
+        <div class="salon-group-name">Forte</div>
+        <div class="salon-group-name-ja">フォルテ</div>
+        <div class="ornament"><div class="ornament-line"></div><div class="ornament-diamond"></div></div>
+      </div>
+      <div class="staff-grid" id="grid-forte"></div>
+    </div>
+
+    <!-- Canon bell tab -->
+    <div class="salon-group" id="canonbell">
+      <div class="salon-group-header reveal">
+        <div class="salon-group-name">Canon bell</div>
+        <div class="salon-group-name-ja">カノン ベル</div>
+        <div class="ornament"><div class="ornament-line"></div><div class="ornament-diamond"></div></div>
+      </div>
+      <div class="staff-grid" id="grid-canonbell"></div>
+    </div>
+
+  </div>
+
+  <!-- MODAL -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal" id="modal">
+      <button class="modal-close" id="modal-close">
+        <svg viewBox="0 0 16 16"><path d="M2 2l12 12M14 2L2 14"/></svg>
+      </button>
+      <div class="modal-photo" id="modal-photo"></div>
+      <div class="modal-body">
+        <div class="modal-salon" id="modal-salon"></div>
+        <div class="modal-role" id="modal-role"></div>
+        <div class="modal-name" id="modal-name"></div>
+        <div class="modal-name-en" id="modal-name-en"></div>
+        <div class="modal-divider"></div>
+        <div class="modal-section-label">Message</div>
+        <p class="modal-message" id="modal-message"></p>
+        <div class="modal-divider"></div>
+        <div class="modal-section-label">得意なメニュー</div>
+        <div class="modal-specialties" id="modal-specialties"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <a href="index.html" class="footer-logo">CANON GROUP</a>
+      <a href="index.html" class="footer-back">← TOPに戻る</a>
+      <span class="footer-copy">© 2025 Canon Group. All rights reserved.</span>
+    </div>
+  </footer>
+
+  <script>
+    // ── スタッフデータ ──────────────────────────────
+    const staff = [
+      // Canon art (7名)
+      { id: 1, salon: 'canonart', salonName: 'Canon art', role: 'Manager', name: 'タク', nameEn: 'Yamada Takuya', photo: 'images/staff_taku.jpg', message: 'はじめまして♪マネージャー山田拓也です。大東市出身です。地元を愛しています♪音楽、ファッション、アートで感性を磨いてます！ショート、ショートボブスタイルをつくるのが得意です！あなたに一番似合う髪型をご提案致します。【髪質改善　酸性ストレート】是非髪を綺麗にさせてください。', specialties: [] },
+      { id: 2, salon: 'canonart', salonName: 'Canon art', role: 'Shop Manager / Hair Artist', name: '鬼束 風雅', nameEn: 'Onitsuka Fuga', photo: 'images/staff_onitsuka.jpg', message: 'はじめまして！鬼束です！カッコイイ、かわいいスタイル提案させていただきます！カラーも大好きなので、髪色でお悩みの方、ぜひ一度ご相談ください♪デザインカラーで周りと差をつけちゃいましょう☆★', specialties: [] },
+      { id: 3, salon: 'canonart', salonName: 'Canon art', role: 'Hair Artist', name: '大西 七海', nameEn: 'Onishi Nanami', photo: 'images/staff_onishi_nanami.jpg', message: 'ニュアンスカラー、ボブが好きです(^-^) お客様のお悩み改善やご希望に寄り添った提案ができるように努めてまいります♪ヘアケアアドバイス、ヘッドスパもお任せください(^-^)', specialties: [] },
+      { id: 4, salon: 'canonart', salonName: 'Canon art', role: 'Hair Artist', name: '上田 里恵', nameEn: 'Ueda Rie', photo: 'images/staff_ueda.jpg', message: 'こんにちわ！30代働くママ美容師です！7歳5歳3歳の３児の子育て真っ最中です…１6時までと短時間の勤務になりますが、楽にスタイリングできてパサつかず手間いらずなヘアスタイルを考えています！是非ご相談ください！', specialties: [] },
+      { id: 5, salon: 'canonart', salonName: 'Canon art', role: 'Hair Artist', name: '小野 理恵', nameEn: 'Ono Rie', photo: 'images/staff_ono.jpg', message: '女性目線の可愛いをご提案致します♪エステティシャン、ウェディングでヘアセット・メイクなどを経て美容師をしております。美容大好きオタクです^_^ お客様史上最高のお手伝いをさせて下さい♪お話し大好きゆるキャラです♪癒しの時間をご提供致します^_^', specialties: [] },
+      { id: 6, salon: 'canonart', salonName: 'Canon art', role: 'Hair Artist', name: 'あっすー', nameEn: 'Assuu', photo: 'images/staff_assuu.jpg', message: 'レイヤーカットや透明感カラーが好きです＾＾☆お客様一人ひとりのお悩みやライフスタイルに合わせたご提案を心がけています♪土日祝、17時以降のご予約はInstagramのDMにてお気軽にご相談ください◎　Instagram → @canon_assuu', specialties: [] },
+      { id: 7, salon: 'canonart', salonName: 'Canon art', role: 'Assistant', name: '中間 勇登', nameEn: 'Nakama Hayato', photo: 'images/staff_nakama.jpg', message: '癒されるシャンプーをさせていただきます。', specialties: [] },
+
+      // Forte (6名)
+      { id: 8,  salon: 'forte', salonName: 'Forte', role: 'Salon Manager', name: '山根 英明', nameEn: 'Yamane Hideaki', photo: 'images/staff_yamane.jpg', message: 'お客様に寄り添い、一緒にベストなヘアスタイルを考えるをモットーに丁寧なカウンセリングを心がけております。1番好きな技術はカットです♪髪質、骨格に合わせて切るので、ご自宅でも再現しやすいヘアスタイルを作ります☆理想に近づけないとお悩みの方はぜひご相談ください。', specialties: [] },
+      { id: 9,  salon: 'forte', salonName: 'Forte', role: 'Hair Artist', name: '龍 悠紀', nameEn: 'Ryu Yuki', photo: 'images/staff_ryu.jpg', message: '髪質改善・ストレートはお任せください♪お客様ご自身で再現しやすいヘアスタイルを提供させていただきます。スタイリングの仕方、ご自宅でのお手入れ、ヘアケアなど丁寧にお伝えし、お客様のヘアスタイルが年間を通して綺麗になり続けていただける施術やご提案をさせていただきますね！何か困った事などございましたら、ぜひ龍にご相談ください♪', specialties: [] },
+      { id: 10, salon: 'forte', salonName: 'Forte', role: 'Hair Artist', name: '高野 圭梨', nameEn: 'Takano Keina', photo: 'images/staff_takano.jpg', message: '今まで悩んできた事・やってみたかった事など、ぜひお聞かせください♪丁寧なカウンセリングを心がけ、素敵なあなただけのstyleを一緒に創らせていただきたいと思います(^^) 今日ここに来てよかったと思って頂けるように、全力で綺麗のお手伝いさせて下さい！！', specialties: [] },
+      { id: 11, salon: 'forte', salonName: 'Forte', role: 'Assistant', name: '宮ヶ谷 詩温', nameEn: 'Miyagatani Shion', photo: 'images/staff_miyagatani.jpg', message: 'お客様の居心地の良い空間作りを心がけています♪', specialties: [] },
+      { id: 12, salon: 'forte', salonName: 'Forte', role: 'Assistant', name: '藤田 友邦', nameEn: 'Fujita Tomokuni', photo: 'images/staff_fujita.jpg', message: 'シャンプーでお客様に最高の時間を提供します♪', specialties: [] },
+      { id: 13, salon: 'forte', salonName: 'Forte', role: 'Assistant', name: '小濱 さくら', nameEn: 'Kohama Sakura', photo: 'images/staff_kohama.jpg', message: '最高の笑顔と接客でお客様を癒します♪', specialties: [] },
+
+      // Canon bell (3名)
+      { id: 14, salon: 'canonbell', salonName: 'Canon bell', role: 'Shop Manager / Hair Artist', name: '妻鳥 文哉', nameEn: 'Mendori Fumiya', photo: 'images/staff_mendori.jpg', message: '日常に寄り添い、髪質改善で叶えるツヤ髪をご提案。髪質改善を中心に、お客様一人ひとりの髪質やお悩みに合わせたご提案をしています。パサつきや広がり、ダメージが気になる方もぜひご相談ください。丁寧なカウンセリングを大切にし、ご自宅でも扱いやすいツヤとまとまりのある美髪づくりをサポートします。', specialties: [] },
+      { id: 15, salon: 'canonbell', salonName: 'Canon bell', role: 'Hair Artist', name: '大西 碧海', nameEn: 'Onishi Ami', photo: 'images/staff_onishi_ami.jpg', message: 'お客様の「なりたい」を叶えるお手伝いをいたします♪しっかりとしたカウンセリングでお客様に合ったヘアスタイルを提案させて頂きます！ライフスタイルに合わせてケアの仕方やセットの方法などお伝えします◎透明感や艶感のあるカラーが得意です☆お気軽にご相談ください！', specialties: [] },
+      { id: 16, salon: 'canonbell', salonName: 'Canon bell', role: 'Hair Artist', name: '安村 美奈', nameEn: 'Yasumura Mina', photo: 'images/staff_yasumura.jpg', message: 'ご希望に合わせた施術で嬉しいお声をいただいています。お客様一人ひとりの髪状態やご希望に合わせた丁寧なカウンセリングを大切にしています。「似合うデザインがわからない」「自宅での再現ができず悩んでいる」などどんなお悩みもぜひご相談ください！しっかりとお話を伺い理想のヘアスタイルに近づけるようご提案させていただきます。', specialties: [] },
+    ];
+
+    // ── カード生成 ──────────────────────────────────
+    function createCard(s) {
+      const photoHTML = s.photo
+        ? `<img src="${s.photo}" alt="${s.name}">`
+        : `<div class="staff-photo-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>`;
+      const div = document.createElement('div');
+      div.className = 'staff-card reveal';
+      div.dataset.id = s.id;
+      div.innerHTML = `
+        <div class="staff-photo">${photoHTML}</div>
+        <div class="staff-info">
+          <div class="staff-role">${s.role}</div>
+          <div class="staff-name">${s.name}</div>
+          <div class="staff-name-en">${s.nameEn}</div>
+        </div>
+        <div class="staff-card-arrow">
+          <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </div>`;
+      div.addEventListener('click', () => openModal(s));
+      return div;
+    }
+
+    // グリッドに挿入
+    ['canonart', 'forte', 'canonbell'].forEach(salon => {
+      const members = staff.filter(s => s.salon === salon);
+      // タブ用
+      const grid = document.getElementById(`grid-${salon}`);
+      members.forEach(s => grid.appendChild(createCard(s)));
+      // All用
+      const gridAll = document.getElementById(`grid-${salon}-all`);
+      members.forEach(s => gridAll.appendChild(createCard(s)));
+    });
+
+    // ── タブ切り替え ────────────────────────────────
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.salon-group').forEach(g => g.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById(btn.dataset.target).classList.add('active');
+        window.scrollTo({ top: 320, behavior: 'smooth' });
+        // リビール再トリガー
+        document.querySelectorAll('.reveal').forEach(el => {
+          el.classList.remove('visible');
+          observer.observe(el);
+        });
+      });
+    });
+
+    // ── モーダル ────────────────────────────────────
+    function openModal(s) {
+      document.getElementById('modal-salon').textContent = s.salonName;
+      document.getElementById('modal-role').textContent = s.role;
+      document.getElementById('modal-name').textContent = s.name;
+      document.getElementById('modal-name-en').textContent = s.nameEn;
+      document.getElementById('modal-message').textContent = s.message;
+
+      const photo = document.getElementById('modal-photo');
+      photo.innerHTML = s.photo
+        ? `<img src="${s.photo}" alt="${s.name}">`
+        : `<div class="modal-photo-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>`;
+
+      const sp = document.getElementById('modal-specialties');
+      sp.innerHTML = s.specialties.map(t => `<span class="specialty-tag">${t}</span>`).join('');
+
+      document.getElementById('modal-overlay').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      document.getElementById('modal-overlay').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('modal-close').addEventListener('click', closeModal);
+    document.getElementById('modal-overlay').addEventListener('click', e => {
+      if (e.target === document.getElementById('modal-overlay')) closeModal();
+    });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+    // ── URLハッシュでタブ自動選択 ──────────────────
+    const hash = location.hash.replace('#', '');
+    if (hash && document.getElementById(hash)) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.salon-group').forEach(g => g.classList.remove('active'));
+      document.querySelector(`[data-target="${hash}"]`)?.classList.add('active');
+      document.getElementById(hash).classList.add('active');
+    }
+
+    // ── スクロールリビール ───────────────────────────
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.05 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
