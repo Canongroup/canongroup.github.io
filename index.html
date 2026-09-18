@@ -9,6 +9,66 @@
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://canongroup.github.io/">
 
+  <!-- 構造化データ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "HairSalon",
+        "name": "Canon art",
+        "alternateName": "カノンアート",
+        "url": "https://canongroup.github.io/",
+        "telephone": "072-872-9159",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "住道1-2-25 三ツ川マンション2F",
+          "addressLocality": "大東市",
+          "addressRegion": "大阪府",
+          "postalCode": "574-0036",
+          "addressCountry": "JP"
+        },
+        "openingHours": "Mo-Su 10:00-20:00",
+        "priceRange": "¥¥"
+      },
+      {
+        "@type": "HairSalon",
+        "name": "Forte",
+        "alternateName": "フォルテ",
+        "url": "https://canongroup.github.io/",
+        "telephone": "06-7182-9927",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "森河内2-30-21 ヴェルデ石橋1F",
+          "addressLocality": "東大阪市",
+          "addressRegion": "大阪府",
+          "postalCode": "578-0941",
+          "addressCountry": "JP"
+        },
+        "openingHours": "Mo-Su 10:00-20:00",
+        "priceRange": "¥¥"
+      },
+      {
+        "@type": "HairSalon",
+        "name": "Canon bell",
+        "alternateName": "カノンベル",
+        "url": "https://canongroup.github.io/",
+        "telephone": "072-819-0523",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "岡山東1-6-10 エクセレント忍ヶ丘2F",
+          "addressLocality": "四條畷市",
+          "addressRegion": "大阪府",
+          "postalCode": "575-0011",
+          "addressCountry": "JP"
+        },
+        "openingHours": "Mo-Su 10:00-20:00",
+        "priceRange": "¥¥"
+      }
+    ]
+  }
+  </script>
+
   <!-- OGP -->
   <meta property="og:title" content="Canon Group｜住道・東大阪・四條畷の美容室">
   <meta property="og:description" content="大阪の美容室グループ「Canon Group」。住道・東大阪・四條畷の3店舗。髪質改善・カラー・カット。">
@@ -192,7 +252,7 @@
     <ul class="nav-links">
       <li><a href="#concept">About</a></li>
       <li><a href="#salons">Salon</a></li>
-      <li><a href="#recruit">Recruit</a></li>
+      <li><a href="recruit.html">Recruit</a></li>
       <li><a href="https://www.instagram.com/canongroup_/" target="_blank">Instagram</a></li>
     </ul>
     <a href="#salons" class="nav-reserve">ご予約はこちら</a>
@@ -220,7 +280,7 @@
   <!-- CONCEPT -->
   <section class="concept" id="concept">
     <div class="reveal">
-      <h2 class="section-en">今よりも<br><em style="font-style:italic; color:var(--brown);">これからの<br>髪を大切に</em></h2>
+      <h2 class="section-en">今よりも<br><em style="font-style:italic; color:var(--brown);">これからの〈br〉髪を大切に。</em></h2>
       <div class="ornament">
         <div class="ornament-line"></div>
         <div class="ornament-diamond"></div>
@@ -229,7 +289,7 @@
     </div>
     <div class="reveal reveal-delay-1">
       <p class="section-label">Concept</p>
-      <p class="concept-body">
+      <p class="concept-body"〉
         あなたの理想を叶え、<br>
         ３年後の髪を守るサロン。
       </p>
@@ -240,7 +300,11 @@
   <section class="salons-section" id="salons">
     <div class="section-header reveal">
       <span class="section-label">Our Locations</span>
-      <span class="section-en">Salon</span>
+      <h2 class="section-en">Salon</h2>
+      <p style="font-size:13px; color:var(--gray); margin-top:16px; letter-spacing:0.05em; line-height:2;">
+        住道・東大阪・四條畷（忍ヶ丘）の3店舗。<br>
+        髪質改善・カラー・カットなら Canon Group へ。
+      </p>
     </div>
 
     <div class="salon-list">
@@ -251,8 +315,8 @@
           <img src="images/canonart.jpeg" alt="Canon art サロン内観">
         </div>
         <div class="salon-info">
-          <div class="salon-name-en">Canon art</div>
-          <div class="salon-name-ja">カノン アート</div>
+          <h2 class="salon-name-en">Canon art</h2>
+          <p class="salon-name-ja">住道の美容室 カノン アート</p>
           <div class="salon-info-row"><span class="salon-info-label">Add</span><span>大阪府大東市住道1-2-25<br>三ツ川マンション2F</span></div>
           <div class="salon-info-row"><span class="salon-info-label">Tel</span><span><a href="tel:0728729159" style="color:inherit;text-decoration:none;">072-872-9159</a></span></div>
           <div class="salon-divider"></div>
@@ -288,8 +352,8 @@
           <img src="images/forte.jpeg" alt="Forte サロン内観">
         </div>
         <div class="salon-info">
-          <div class="salon-name-en">Forte</div>
-          <div class="salon-name-ja">フォルテ</div>
+          <h2 class="salon-name-en">Forte</h2>
+          <p class="salon-name-ja">東大阪・放出エリアの美容室 フォルテ</p>
           <div class="salon-info-row"><span class="salon-info-label">Add</span><span>大阪府東大阪市森河内2-30-21<br>ヴェルデ石橋1F</span></div>
           <div class="salon-info-row"><span class="salon-info-label">Tel</span><span><a href="tel:0671829927" style="color:inherit;text-decoration:none;">06-7182-9927</a></span></div>
           <div class="salon-divider"></div>
@@ -325,8 +389,8 @@
           <img src="images/canonbell.jpeg" alt="Canon bell サロン内観">
         </div>
         <div class="salon-info">
-          <div class="salon-name-en">Canon bell</div>
-          <div class="salon-name-ja">カノン ベル</div>
+          <h2 class="salon-name-en">Canon bell</h2>
+          <p class="salon-name-ja">四條畷・忍ヶ丘の美容室 カノン ベル</p>
           <div class="salon-info-row"><span class="salon-info-label">Add</span><span>大阪府四條畷市岡山東1-6-10<br>エクセレント忍ヶ丘2F</span></div>
           <div class="salon-info-row"><span class="salon-info-label">Tel</span><span><a href="tel:0728190523" style="color:inherit;text-decoration:none;">072-819-0523</a></span></div>
           <div class="salon-divider"></div>
@@ -395,7 +459,7 @@
         <ul>
           <li><a href="#concept">About</a></li>
           <li><a href="#salons">Salon</a></li>
-          <li><a href="#recruit">Recruit</a></li>
+          <li><a href="recruit.html">Recruit</a></li>
         </ul>
       </nav>
       <div class="footer-nav">
