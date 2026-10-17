@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>求人・採用情報 | Canon Group｜住道・東大阪・四條畷の美容室</title>
+  <meta name="description" content="Canon Groupの求人・採用情報。住道・東大阪・四條畷の美容室グループで一緒に働きませんか。美容師・アシスタント募集中。">
+  <meta name="keywords" content="Canon Group 求人,美容師 求人 大阪,住道 美容師 募集,四條畷 美容師 募集,美容室 採用,カノングループ 採用">
+  <meta name="robots" content="index, follow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Noto+Sans+JP:wght@300;400;500&family=Zen+Old+Mincho:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cream: #faf7f2;
+      --white: #ffffff;
+      --beige: #f0ebe2;
+      --brown: #8b6f5e;
+      --dark-brown: #4a3728;
+      --gold: #c9a96e;
+      --light-gold: #e8d5b0;
+      --gray: #999;
+      --text: #3a2e28;
+      --border: #e0d5c8;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--cream); color: var(--text); font-family: 'Noto Sans JP', sans-serif; font-weight: 300; overflow-x: hidden; }
+
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(250,247,242,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 60px; height: 72px; }
+    .logo-wrap { display: flex; flex-direction: column; line-height: 1; text-decoration: none; }
+    .logo-en { font-family: 'Cormorant Garamond', serif; font-size: 20px; letter-spacing: 0.3em; color: var(--dark-brown); }
+    .logo-ja { font-size: 9px; letter-spacing: 0.2em; color: var(--brown); margin-top: 3px; }
+    .nav-links { display: flex; gap: 40px; list-style: none; align-items: center; }
+    .nav-links a { color: var(--text); text-decoration: none; font-size: 14px; letter-spacing: 0.15em; text-transform: uppercase; transition: color 0.3s; position: relative; }
+    .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; right: 0; height: 1px; background: var(--gold); transform: scaleX(0); transition: transform 0.3s; }
+    .nav-links a:hover { color: var(--brown); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+    .nav-reserve { background: var(--dark-brown); color: var(--cream) !important; padding: 10px 24px; font-size: 11px; letter-spacing: 0.2em; text-decoration: none; transition: background 0.3s; }
+    .nav-reserve:hover { background: var(--brown); }
+    .nav-reserve::after { display: none !important; }
+
+    /* HERO */
+    .hero { height: 100vh; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; background: var(--dark-brown); }
+    .hero-bg-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 30%; opacity: 0.4; }
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(74,55,40,0.2) 0%, rgba(74,55,40,0.6) 100%); z-index: 1; }
+    .hero-content { position: relative; z-index: 2; text-align: center; }
+    .hero-label { font-size: 11px; letter-spacing: 0.5em; color: var(--light-gold); text-transform: uppercase; margin-bottom: 24px; animation: fadeIn 1.5s ease forwards; opacity: 0; }
+    .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(56px, 9vw, 108px); font-weight: 300; line-height: 1; letter-spacing: 0.05em; color: var(--cream); animation: fadeIn 1.5s 0.3s ease forwards; opacity: 0; }
+    .hero-title em { font-style: italic; color: var(--light-gold); display: block; }
+    .hero-catch { font-family: 'Zen Old Mincho', serif; font-size: clamp(14px, 2vw, 20px); color: var(--cream); margin-top: 32px; letter-spacing: 0.3em; line-height: 2; animation: fadeIn 1.5s 0.6s ease forwards; opacity: 0; }
+    .hero-line { width: 1px; height: 80px; background: linear-gradient(to bottom, var(--light-gold), transparent); margin: 48px auto 0; animation: fadeIn 1.5s 0.9s ease forwards; opacity: 0; }
+    @keyframes fadeIn { to { opacity: 1; } }
+    .scroll-hint { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 10px; font-size: 9px; letter-spacing: 0.4em; color: rgba(255,255,255,0.5); z-index: 2; animation: fadeIn 2s 1.5s ease forwards; opacity: 0; }
+    .scroll-bar { width: 1px; height: 48px; background: linear-gradient(to bottom, var(--light-gold), transparent); animation: scrollAnim 2s 2s ease-in-out infinite; }
+    @keyframes scrollAnim { 0% { transform: scaleY(0); transform-origin: top; opacity:1; } 50% { transform: scaleY(1); transform-origin: top; opacity:1; } 100% { transform: scaleY(1); transform-origin: bottom; opacity:0; } }
+
+    /* PAGE NAV */
+    .page-nav { background: var(--white); border-bottom: 1px solid var(--border); padding: 0 80px; display: flex; gap: 0; overflow-x: auto; }
+    .page-nav a { padding: 20px 28px; font-size: 11px; letter-spacing: 0.2em; color: var(--gray); text-decoration: none; white-space: nowrap; transition: color 0.3s; position: relative; }
+    .page-nav a::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: var(--gold); transform: scaleX(0); transition: transform 0.3s; }
+    .page-nav a:hover { color: var(--dark-brown); }
+    .page-nav a:hover::after { transform: scaleX(1); }
+
+    /* SECTION 共通 */
+    .section { padding: 120px 80px; max-width: 1100px; margin: 0 auto; }
+    .section-label { font-size: 10px; letter-spacing: 0.4em; color: var(--gold); text-transform: uppercase; margin-bottom: 16px; display: block; }
+    .section-en { font-family: 'Cormorant Garamond', serif; font-size: clamp(36px, 4vw, 56px); font-weight: 300; color: var(--dark-brown); line-height: 1.1; }
+    .ornament { display: flex; align-items: center; gap: 16px; margin: 28px 0; }
+    .ornament-line { height: 1px; width: 48px; background: var(--gold); }
+    .ornament-diamond { width: 6px; height: 6px; background: var(--gold); transform: rotate(45deg); }
+    .body-text { font-size: 15px; line-height: 2.6; color: var(--brown); font-family: 'Zen Old Mincho', serif; }
+
+    /* MESSAGE */
+    .message-section { padding: 120px 0; background: var(--white); }
+    .message-inner { max-width: 1100px; margin: 0 auto; padding: 0 80px; display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center; }
+    .message-photo { background: var(--beige); aspect-ratio: 4/5; overflow: hidden; position: relative; }
+    .message-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .message-photo-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, var(--beige) 0%, var(--light-gold) 100%); min-height: 400px; }
+    .message-photo-placeholder svg { width: 80px; height: 80px; opacity: 0.2; }
+
+    /* POINT CARDS */
+    .points-section { background: var(--beige); padding: 120px 80px; }
+    .points-inner { max-width: 1100px; margin: 0 auto; }
+    .points-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 60px; }
+    .point-card { background: var(--white); padding: 48px 36px; border: 1px solid var(--border); }
+    .point-num { font-family: 'Cormorant Garamond', serif; font-size: 56px; color: var(--light-gold); line-height: 1; margin-bottom: 20px; }
+    .point-title { font-size: 16px; color: var(--dark-brown); margin-bottom: 16px; letter-spacing: 0.05em; font-weight: 400; }
+    .point-text { font-size: 13px; line-height: 2.2; color: var(--brown); }
+
+    /* WELFARE */
+    .welfare-section { padding: 120px 80px; max-width: 1100px; margin: 0 auto; }
+    .welfare-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; margin-top: 60px; }
+    .welfare-item { background: var(--white); padding: 36px 40px; border: 1px solid var(--border); display: flex; gap: 24px; align-items: flex-start; }
+    .welfare-icon { width: 40px; height: 40px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: var(--beige); border-radius: 50%; }
+    .welfare-icon svg { width: 20px; height: 20px; fill: none; stroke: var(--gold); stroke-width: 1.5; }
+    .welfare-title { font-size: 14px; color: var(--dark-brown); margin-bottom: 8px; font-weight: 400; letter-spacing: 0.05em; }
+    .welfare-text { font-size: 12px; color: var(--brown); line-height: 2; }
+
+    /* REQUIREMENTS TABLE */
+    .req-section { background: var(--dark-brown); padding: 120px 80px; }
+    .req-inner { max-width: 1100px; margin: 0 auto; }
+    .req-section .section-label { color: var(--light-gold); }
+    .req-section .section-en { color: var(--cream); }
+    .req-table { margin-top: 60px; border-collapse: collapse; width: 100%; }
+    .req-table tr { border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .req-table tr:first-child { border-top: 1px solid rgba(255,255,255,0.08); }
+    .req-table th { padding: 24px 0; font-size: 11px; letter-spacing: 0.2em; color: var(--light-gold); text-align: left; width: 180px; font-weight: 300; vertical-align: top; padding-right: 40px; }
+    .req-table td { padding: 24px 0; font-size: 14px; color: rgba(250,247,242,0.8); line-height: 2; }
+
+    /* FLOW */
+    .flow-section { padding: 120px 80px; max-width: 1100px; margin: 0 auto; }
+    .flow-list { margin-top: 60px; display: flex; flex-direction: column; gap: 0; }
+    .flow-item { display: grid; grid-template-columns: 80px 1fr; gap: 40px; position: relative; padding-bottom: 48px; }
+    .flow-item:last-child { padding-bottom: 0; }
+    .flow-item::before { content: ''; position: absolute; left: 39px; top: 60px; bottom: 0; width: 1px; background: var(--border); }
+    .flow-item:last-child::before { display: none; }
+    .flow-num { width: 80px; height: 80px; border: 1px solid var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 28px; color: var(--gold); flex-shrink: 0; background: var(--cream); position: relative; z-index: 1; }
+    .flow-body { padding-top: 20px; }
+    .flow-title { font-size: 16px; color: var(--dark-brown); margin-bottom: 10px; font-weight: 400; letter-spacing: 0.05em; }
+    .flow-text { font-size: 13px; color: var(--brown); line-height: 2.2; }
+
+    /* ENTRY */
+    .entry-section { background: var(--dark-brown); padding: 120px 80px; text-align: center; position: relative; overflow: hidden; }
+    .entry-section::before { content: 'ENTRY'; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-family: 'Cormorant Garamond', serif; font-size: 200px; color: rgba(255,255,255,0.03); white-space: nowrap; pointer-events: none; }
+    .entry-section .section-label { color: var(--light-gold); }
+    .entry-section .section-en { color: var(--cream); }
+    .entry-desc { font-size: 14px; color: rgba(250,247,242,0.6); line-height: 2.4; margin: 32px 0 48px; font-family: 'Zen Old Mincho', serif; }
+    .entry-btn { display: inline-flex; align-items: center; gap: 12px; border: 1px solid var(--light-gold); color: var(--light-gold); text-decoration: none; padding: 20px 56px; font-size: 12px; letter-spacing: 0.3em; transition: background 0.3s, color 0.3s; }
+    .entry-btn:hover { background: var(--light-gold); color: var(--dark-brown); }
+
+    /* FOOTER */
+    footer { background: var(--cream); border-top: 1px solid var(--border); padding: 60px 80px; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+    .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 24px; letter-spacing: 0.2em; color: var(--dark-brown); text-decoration: none; }
+    .footer-back { color: var(--brown); text-decoration: none; font-size: 12px; letter-spacing: 0.2em; transition: color 0.3s; }
+    .footer-back:hover { color: var(--dark-brown); }
+    .footer-copy { font-size: 11px; color: var(--gray); }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.9s ease, transform 0.9s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* RESPONSIVE */
+    @media (max-width: 960px) {
+      nav { padding: 0 24px; }
+      .nav-links, .nav-reserve { display: none; }
+      .page-nav { padding: 0 12px; }
+      .section, .welfare-section, .flow-section { padding: 80px 28px; }
+      .message-section { padding: 80px 0; }
+      .message-inner { grid-template-columns: 1fr; padding: 0 28px; gap: 48px; }
+      .points-section { padding: 80px 28px; }
+      .points-grid { grid-template-columns: 1fr; }
+      .welfare-grid { grid-template-columns: 1fr; }
+      .req-section { padding: 80px 28px; }
+      .req-table th { width: 100px; font-size: 10px; }
+      .entry-section { padding: 80px 28px; }
+      footer { padding: 48px 28px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="logo-wrap">
+      <span class="logo-en">CANON GROUP</span>
+      <span class="logo-ja">カノン グループ</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#concept">About</a></li>
+      <li><a href="index.html#salons">Salon</a></li>
+      <li><a href="staff.html">Staff</a></li>
+      <li><a href="recruit.html">Recruit</a></li>
+    </ul>
+    <a href="index.html#salons" class="nav-reserve">ご予約はこちら</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <img class="hero-bg-img" src="images/recruit_hero.jpeg" alt="">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-label">Join Our Team</p>
+      <h1 class="hero-title">Recruit<br><em>Information</em></h1>
+      <p class="hero-catch">
+        共に、美しさを創ろう。<br>
+        あなたの情熱を待っています。
+      </p>
+      <div class="hero-line"></div>
+    </div>
+    <div class="scroll-hint">
+      <span>scroll</span>
+      <div class="scroll-bar"></div>
+    </div>
+  </section>
+
+  <!-- PAGE NAV -->
+  <nav class="page-nav">
+    <a href="#message">Message</a>
+    <a href="#point">働く環境</a>
+    <a href="#welfare">福利厚生</a>
+    <a href="#requirements">募集要項</a>
+    <a href="#flow">採用の流れ</a>
+    <a href="#entry">Entry</a>
+  </nav>
+
+  <!-- MESSAGE -->
+  <section class="message-section" id="message">
+    <div class="message-inner">
+      <div class="message-photo reveal">
+        <div class="message-photo-placeholder">
+          <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <span class="section-label">Message</span>
+        <h2 class="section-en">一緒に、<br><em style="font-style:italic; color:var(--brown);">お客様を美しく。</em></h2>
+        <div class="ornament"><div class="ornament-line"></div><div class="ornament-diamond"></div></div>
+        <p class="body-text">
+          ※ここに代表・マネージャーからのメッセージが入ります。<br><br>
+          CANONグループでは、スタッフ一人ひとりの成長を大切にしています。技術だけでなく、人としての豊かさも磨ける環境を整えています。<br><br>
+          あなたの「美容師として輝きたい」という想いを、ぜひ私たちと一緒に実現しましょう。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- POINT -->
+  <section class="points-section" id="point">
+    <div class="points-inner">
+      <div class="reveal" style="text-align:center; margin-bottom:0;">
+        <span class="section-label">Why Canon Group</span>
+        <h2 class="section-en">働く環境</h2>
+      </div>
+      <div class="points-grid">
+        <div class="point-card reveal reveal-delay-1">
+          <div class="point-num">01</div>
+          <div class="point-title">早期デビューを目指す教育体制</div>
+          <p class="point-text">週1回1時間の全体レッスン＋先輩によるマンツーマンサポート。2年カリキュラムで、努力次第で早期デビューも可能。モデルレッスン料金還元率は最大70%（業界トップクラス）。</p>
+        </div>
+        <div class="point-card reveal reveal-delay-2">
+          <div class="point-num">02</div>
+          <div class="point-title">月1回・全スタッフ勉強会</div>
+          <p class="point-text">月に1度、営業をお休みにして全スタッフでの勉強会を開催。様々なジャンルの技術・知識を学べるので、アシスタントもスタイリストもスキルアップの機会に。</p>
+        </div>
+        <div class="point-card reveal reveal-delay-3">
+          <div class="point-num">03</div>
+          <div class="point-title">年2回のリフレッシュ休暇</div>
+          <p class="point-text">SNSで話題のスポットへ、店舗スタッフ全員で行く日帰りイベントあり♪プライベートも大切にできる環境です。子育て中のスタッフも活躍中。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WELFARE -->
+  <section class="welfare-section" id="welfare">
+    <div class="reveal">
+      <span class="section-label">Benefits</span>
+      <h2 class="section-en">福利厚生</h2>
+    </div>
+    <div class="welfare-grid reveal reveal-delay-1">
+      <div class="welfare-item">
+        <div class="welfare-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div>
+          <div class="welfare-title">社会保険完備</div>
+          <p class="welfare-text">雇用保険・労災保険・美容国保・厚生年金</p>
+        </div>
+      </div>
+      <div class="welfare-item">
+        <div class="welfare-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+        <div>
+          <div class="welfare-title">家賃補助あり</div>
+          <p class="welfare-text">遠方からサロン近くに引っ越す方を対象に家賃補助制度あり</p>
+        </div>
+      </div>
+      <div class="welfare-item">
+        <div class="welfare-icon"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        <div>
+          <div class="welfare-title">交通費支給</div>
+          <p class="welfare-text">月20,000円まで支給</p>
+        </div>
+      </div>
+      <div class="welfare-item">
+        <div class="welfare-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
+        <div>
+          <div class="welfare-title">充実の休暇制度</div>
+          <p class="welfare-text">夏季5日・冬季6日・リフレッシュ2日・GW1日程度<br>有給消化率ほぼ100%</p>
+        </div>
+      </div>
+      <div class="welfare-item">
+        <div class="welfare-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+        <div>
+          <div class="welfare-title">歩合給・皆勤手当</div>
+          <p class="welfare-text">店舗目標に応じた歩合給あり<br>皆勤手当10,000円（月）</p>
+        </div>
+      </div>
+      <div class="welfare-item">
+        <div class="welfare-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+        <div>
+          <div class="welfare-title">資格取得支援</div>
+          <p class="welfare-text">研修制度あり・デビュー応援制度あり<br>モデルレッスン料金還元率最大70%</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REQUIREMENTS -->
+  <section class="req-section" id="requirements">
+    <div class="req-inner">
+      <div class="reveal">
+        <span class="section-label">Requirements</span>
+        <h2 class="section-en">募集要項</h2>
+      </div>
+      <table class="req-table reveal reveal-delay-1">
+        <tr>
+          <th>勤務地</th>
+          <td>Canon art（大東市住道）／ Forte（東大阪市森河内）／ Canon bell（四條畷市岡山東）</td>
+        </tr>
+        <tr>
+          <th>雇用形態</th>
+          <td>正社員</td>
+        </tr>
+        <tr>
+          <th>給与</th>
+          <td>
+            アシスタント　月給200,000円〜220,000円<br>
+            スタイリスト　月給260,000円＋歩合給<br>
+            ※皆勤手当10,000円含む／固定残業代なし／歩合給あり（店舗目標に応じて）<br>
+            試用期間1〜3ヶ月・条件変更なし
+          </td>
+        </tr>
+        <tr>
+          <th>勤務時間</th>
+          <td>
+            10:00 〜 20:00（退勤は20時までに可能）<br>
+            カット・カラー最終受付 18:00 ／ カット最終受付 18:30<br>
+            休憩60分
+          </td>
+        </tr>
+        <tr>
+          <th>休日</th>
+          <td>
+            毎週月曜日・第2第3火曜日・第1日曜日（8月・12月を除く）<br>
+            夏季休暇5日・冬季休暇6日・リフレッシュ休暇2日・GW1日程度<br>
+            有給休暇あり（消化率ほぼ100%）
+          </td>
+        </tr>
+        <tr>
+          <th>待遇・手当</th>
+          <td>
+            社会保険完備（雇用保険・労災保険・美容国保・厚生年金）<br>
+            交通費支給（月20,000円まで）／ 家賃補助あり（遠方からの就職対象）<br>
+            歩合給あり／ 皆勤手当10,000円／ 月給20万円以上保障
+          </td>
+        </tr>
+        <tr>
+          <th>教育体制</th>
+          <td>
+            週1回の全体レッスン（1時間程度）＋希望者には先輩がサポート<br>
+            月1回・全スタッフ合同勉強会（営業日を休みにして実施）<br>
+            2年カリキュラム／ 努力次第で早期デビュー可能<br>
+            デビュー応援制度：モデルレッスン料金還元率 最大70%（業界トップクラス）
+          </td>
+        </tr>
+        <tr>
+          <th>応募要件</th>
+          <td>
+            未経験可・ブランク可・無資格可・新卒可・学歴不問<br>
+            新卒大歓迎♪ 通信生歓迎！ WEB面接可・見学相談可<br>
+            即日勤務OK／ 店長候補も歓迎
+          </td>
+        </tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- FLOW -->
+  <section class="flow-section" id="flow">
+    <div class="reveal">
+      <span class="section-label">Recruitment Flow</span>
+      <h2 class="section-en">採用の流れ</h2>
+    </div>
+    <div class="flow-list reveal reveal-delay-1">
+      <div class="flow-item">
+        <div class="flow-num">01</div>
+        <div class="flow-body">
+          <div class="flow-title">お問い合わせ・エントリー</div>
+          <p class="flow-text">InstagramリクルートアカウントへのDM、またはお電話にてお気軽にご連絡ください。サロン見学のみも大歓迎です。</p>
+        </div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-num">02</div>
+        <div class="flow-body">
+          <div class="flow-title">サロン見学・会社説明</div>
+          <p class="flow-text">実際のサロンの雰囲気を見ていただきながら、私たちの想いや教育体制についてお話しします。</p>
+        </div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-num">03</div>
+        <div class="flow-body">
+          <div class="flow-title">面接・採用試験</div>
+          <p class="flow-text">日程を調整の上、面接を行います。技術や経験よりも、あなたの想いやビジョンを大切にしています。</p>
+        </div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-num">04</div>
+        <div class="flow-body">
+          <div class="flow-title">内定・入社</div>
+          <p class="flow-text">面接後、1週間以内に結果をご連絡します。入社前の研修を経て、CANONグループの一員として一緒に働きましょう！</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENTRY -->
+  <section class="entry-section reveal" id="entry">
+    <span class="section-label">Entry</span>
+    <h2 class="section-en">エントリー</h2>
+    <p class="entry-desc">
+      まずはお気軽にInstagramのDMからご連絡ください。<br>
+      24時間、いつでも応募可能です。
+    </p>
+    <a href="https://www.instagram.com/canongroup_recruit_/" target="_blank" rel="noopener noreferrer" class="entry-btn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+      @canongroup_recruit_
+    </a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <a href="index.html" class="footer-logo">CANON GROUP</a>
+      <a href="index.html" class="footer-back">← TOPに戻る</a>
+      <span class="footer-copy">© 2025 Canon Group. All rights reserved.</span>
+    </div>
+  </footer>
+
+  <script>
+    // スムーズスクロール（ページ内nav）
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (!target) return;
+        e.preventDefault();
+        const top = target.getBoundingClientRect().top + window.scrollY - 72;
+        window.scrollTo({ top, behavior: 'smooth' });
+      });
+    });
+
+    // スクロールリビール
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.05 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
