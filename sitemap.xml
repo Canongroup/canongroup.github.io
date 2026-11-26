@@ -29,6 +29,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://canongroup.github.io/blog/2026-11-26-straight-vs-perm.html</loc>
+    <lastmod>2026-11-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://canongroup.github.io/staff.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
